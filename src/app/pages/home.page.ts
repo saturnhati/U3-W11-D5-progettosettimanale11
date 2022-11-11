@@ -1,29 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-home',
+  selector: "app-home",
   template: `
-<h1  class="text-center"><span appHighlight>Benvenuto</span> sulla home page</h1>
-  <div class=" mt-5 d-flex  justify-content-around">
-    <button (click)="gotoActivePosts()" class="btn btn-primary" >vai a post attivi</button>
-    <button (click)="gotoInactivePosts()" class="btn btn-primary" >vai a post non attivi</button>
-  </div>
+    <h1 class="text-center my-5">Benvenuto sulla home page</h1>
+    <div class=" mt-5 d-flex  justify-content-around">
+      <button (click)="gotoActivePosts()" mat-flat-button color="primary">POST ATTIVI</button>
+      <button (click)="gotoInactivePosts()" mat-flat-button color="primary">POST NON ATTIVI</button>
+    </div>
   `,
-  styles: [
-  ]
+  styles: [],
 })
 export class HomePage implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router:Router) { }
-
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  gotoInactivePosts() {
+    this.router.navigate(["/inactive-posts"]);
   }
-  gotoInactivePosts(){
-    this.router.navigate(['/inactive-posts'])
+  gotoActivePosts() {
+    this.router.navigate(["/active-posts"]);
   }
-  gotoActivePosts(){
-    this.router.navigate(['/active-posts'])
-  }
-
 }

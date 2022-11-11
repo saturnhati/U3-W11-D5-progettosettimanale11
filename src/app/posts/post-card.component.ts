@@ -4,26 +4,20 @@ import { Post } from "../models/post";
 @Component({
   selector: "app-post-card",
   template: `
-    <div
-      [ngClass]="{
-        'bg-warning': post.type == 'news',
-        'bg-info': post.type == 'education',
-        'bg-dark': post.type == 'politic',
-        'text-white': post.type == 'politic'
-      }"
-      class="card mb-4"
-    >
-      <h5 class="card-header"><span appHighlight>Post</span></h5>
-      <div class="card-body">
-        <h5 class="card-title">{{ post.title | maiuscolo }}</h5>
-        <p class="card-text">
-          {{ post.body }}
-        </p>
-        <ng-content></ng-content>
-      </div>
-    </div>
+    <mat-card class="my-3 py-4 px-5">
+      <mat-card-title>{{ post.id }} - {{ post.title | maiuscolo }}</mat-card-title>
+      <mat-card-subtitle>Post</mat-card-subtitle>
+      <mat-card-content>{{ post.body }}</mat-card-content>
+      <mat-card-footer><ng-content></ng-content></mat-card-footer>
+    </mat-card>
   `,
-  styles: [],
+  styles: [
+    `
+      mat-card-title {
+        line-height: 1.7rem;
+      }
+    `,
+  ],
 })
 export class PostCardComponent implements OnInit {
   @Input() post!: Post;

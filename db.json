@@ -6,6 +6,34 @@
       "firstname": "Mario",
       "lastname": "Rossi",
       "id": 1
+    },
+    {
+      "email": "giuseppe@dipisa.com",
+      "password": "$2a$10$6FDZzXnJsXmghlDsmtm.IOuue9Md2.lr45o1PZiEEDO47a/Zziw6O",
+      "firstname": "Giuseppe",
+      "lastname": "Di Pisa",
+      "id": 2
+    },
+    {
+      "email": "luca@senatore.com",
+      "password": "$2a$10$2NQn8gmpmfgUmkjoi1iklO378EDDnLO7aA.193aXtlLOhU.DIqE..",
+      "firstname": "Luca",
+      "lastname": "Senatore",
+      "id": 3
+    },
+    {
+      "email": "cristiano@aliotta.com",
+      "password": "$2a$10$YlEGDIAiwZzZPcF7BSvTn.rI.DFV2ZOPAy9gbYwGhtSeiobQluxl6",
+      "firstname": "Cristiano",
+      "lastname": "Aliotta",
+      "id": 4
+    },
+    {
+      "email": "gaia@filippi.com",
+      "password": "$2a$10$RDlbFy5vsfyYDDkdxHMheOUrmmgEv.QLy1xqtJzXDZzHLxDKQp/rS",
+      "firstname": "Gaia",
+      "lastname": "Filippi",
+      "id": 5
     }
   ],
   "posts": [

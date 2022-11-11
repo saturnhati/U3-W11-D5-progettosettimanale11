@@ -7,23 +7,30 @@ import { AuthService } from "./auth.service";
   template: `
     <div class="container my-4">
       <form #f="ngForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <input name="firstname" ngModel type="text" class="form-control" placeholder="First Name" />
-        </div>
-        <div class="mb-3">
-          <input name="lastname" ngModel type="text" class="form-control" placeholder="Last Name" />
-        </div>
-        <div class="mb-3">
-          <input name="email" ngModel type="email" class="form-control" placeholder="Email" />
-        </div>
-        <div class="mb-3">
-          <input name="password" ngModel type="password" class="form-control" placeholder="Password" />
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <mat-form-field class="mb-3">
+          <input matInput name="firstname" ngModel type="text" placeholder="First Name" />
+        </mat-form-field>
+        <mat-form-field class="mb-3">
+          <input matInput name="lastname" ngModel type="text" placeholder="Last Name" />
+        </mat-form-field>
+        <mat-form-field class="mb-3">
+          <input matInput name="email" ngModel type="email" placeholder="Email" />
+        </mat-form-field>
+        <mat-form-field class="mb-3">
+          <input matInput name="password" ngModel type="password" placeholder="Password" />
+        </mat-form-field>
+        <button class="my-1" mat-flat-button color="primary">Register</button>
       </form>
     </div>
   `,
-  styles: [],
+  styles: [
+    `
+      mat-form-field {
+        max-width: 500px;
+        display: block;
+      }
+    `,
+  ],
 })
 export class RegisterPage implements OnInit {
   @ViewChild("f") form!: NgForm;

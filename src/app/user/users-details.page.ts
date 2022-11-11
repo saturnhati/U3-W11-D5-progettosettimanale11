@@ -6,7 +6,8 @@ import { UsersService } from "./users.service";
 @Component({
   template: `
     <ng-container *ngIf="user; else elseTemplate">
-      <h3>{{ user.firstname }}</h3>
+      <h2>{{ user.firstname }} {{ user.lastname }}</h2>
+      <p>ID: {{ user.id }}</p>
       <p>email: {{ user.email }}</p>
     </ng-container>
     <ng-template #elseTemplate>

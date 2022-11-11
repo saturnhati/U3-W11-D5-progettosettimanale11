@@ -6,9 +6,9 @@ import { UsersService } from "./users.service";
 @Component({
   template: `
     <div class="container mt-4">
-      <ul class="list-group">
-        <li [routerLink]="[user.id]" routerLinkActive="active" class="list-group-item" *ngFor="let user of users">{{ user.firstname }} {{ user.lastname }}</li>
-      </ul>
+      <mat-nav-list class="list-group">
+        <mat-list-item [routerLink]="[user.id]" routerLinkActive="active" *ngFor="let user of users">{{ user.firstname }} {{ user.lastname }}</mat-list-item>
+      </mat-nav-list>
       <hr />
       <router-outlet></router-outlet>
     </div>

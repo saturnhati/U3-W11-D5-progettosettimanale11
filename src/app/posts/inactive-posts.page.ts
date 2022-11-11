@@ -7,8 +7,8 @@ import { PostsService } from "./posts.service";
     <div class="container mt-5">
       <div *ngFor="let post of posts; let i = index">
         <app-post-card [post]="post" *ngIf="!post.active">
-          <button (click)="onActivePost(post.id, i)" class="btn btn-primary">Attiva</button>
-          <button [routerLink]="['/inactive-posts', post.id]" routerLinkActive="router-link-active" class="btn btn-primary ms-3">Dettagli</button>
+          <button class="mx-2 my-1" (click)="onActivePost(post.id, i)" mat-flat-button color="primary">Attiva</button>
+          <button class="mx-2 my-1" [routerLink]="['/active-posts', post.id]" routerLinkActive="router-link-active" mat-flat-button color="primary">Dettagli</button>
         </app-post-card>
       </div>
     </div>

@@ -7,8 +7,8 @@ import { PostsService } from "./posts.service";
     <div class="container mt-5">
       <div *ngFor="let post of posts; let i = index">
         <app-post-card *ngIf="post.active" [post]="post">
-          <button (click)="onInactivePost(post.id, i)" class="btn btn-primary">Disattiva</button>
-          <button [routerLink]="['/active-posts', post.id]" routerLinkActive="router-link-active" class="btn btn-primary ms-3">Dettagli</button>
+          <button class="mx-2 my-1" (click)="onInactivePost(post.id, i)" mat-flat-button color="primary">Disattiva</button>
+          <button class="mx-2 my-1" [routerLink]="['/active-posts', post.id]" routerLinkActive="router-link-active" mat-flat-button color="primary">Dettagli</button>
         </app-post-card>
       </div>
     </div>
@@ -20,7 +20,6 @@ export class ActivePostsPage implements OnInit {
   constructor(private postsSrv: PostsService) {}
 
   async ngOnInit() {
-    const posts = await this.postsSrv.getPosts();
     this.postsSrv.getPosts().subscribe((data) => (this.posts = data));
     console.log(this.posts);
   }

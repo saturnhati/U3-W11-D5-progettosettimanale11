@@ -7,6 +7,8 @@ import { FormsModule } from "@angular/forms";
 import { Route, RouterModule } from "@angular/router";
 import { PostCardComponent } from "./post-card.component";
 import { SharedModule } from "../shared/shared.module";
+import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
 
 const routes: Route[] = [
   {
@@ -31,7 +33,7 @@ const Component = [ActivePostsPage, InactivePostsPage, PostDetailsPage, PostCard
 
 @NgModule({
   declarations: [...Component],
-  imports: [CommonModule, FormsModule, RouterModule.forChild(routes), SharedModule],
+  imports: [CommonModule, FormsModule, RouterModule.forChild(routes), SharedModule, MatCardModule, MatButtonModule],
   exports: [...Component],
 })
 export class PostsModule {}

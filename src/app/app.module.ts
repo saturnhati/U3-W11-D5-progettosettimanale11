@@ -10,10 +10,14 @@ import { SharedModule } from "./shared/shared.module";
 import { AuthModule } from "./auth/auth.module";
 import { PostsModule } from "./posts/posts.module";
 import { UserModule } from "./user/user.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatButtonModule } from "@angular/material/button";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, HomePage],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, AuthModule, PostsModule, UserModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, AuthModule, PostsModule, UserModule, BrowserAnimationsModule, MatButtonModule, MatToolbarModule, MatIconModule],
   providers: [],
   bootstrap: [AppComponent],
 })
