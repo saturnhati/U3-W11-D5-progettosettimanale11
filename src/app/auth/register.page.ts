@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { AuthService } from "./auth.service";
 
 @Component({
@@ -36,19 +37,58 @@ export class RegisterPage implements OnInit {
   @ViewChild("f") form!: NgForm;
   error = undefined;
   completed = undefined;
+  durationInSeconds = 3;
 
-  constructor(private authService: AuthService, private route: Router) {}
+  constructor(private authService: AuthService, private route: Router, private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
     this.authService.signUp(this.form.value).subscribe(
       (data) => {
-        console.log(data), (this.error = undefined), this.route.navigate(["/login"]);
+        console.log(data), (this.error = undefined), this.route.navigate(["/login"]), this.openSnackBar();
       },
       (err) => {
-        console.log(err), (this.error = err.error);
+        console.log(err), (this.error = err.error), this.openSnackBar2();
       }
     );
   }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(RegisteredComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
+
+  openSnackBar2() {
+    this._snackBar.openFromComponent(ErrorComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
 }
+
+@Component({
+  selector: "snack-bar-component",
+  template: ` <span class="registered-snack"> Registered! </span> `,
+  styles: [
+    `
+      .registered-snack {
+        color: lavender;
+      }
+    `,
+  ],
+})
+export class RegisteredComponent {}
+
+@Component({
+  selector: "snack-bar-component2",
+  template: ` <span class="registered-snack"> Error! </span> `,
+  styles: [
+    `
+      .registered-snack {
+        color: lavender;
+      }
+    `,
+  ],
+})
+export class ErrorComponent {}

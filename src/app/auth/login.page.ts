@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 
@@ -29,19 +30,39 @@ import { AuthService } from "./auth.service";
 export class LoginPage implements OnInit {
   @ViewChild("f") form!: NgForm;
   error = undefined;
+  durationInSeconds = 3;
 
-  constructor(private authService: AuthService, private route: Router) {}
+  constructor(private authService: AuthService, private route: Router, private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
     this.authService.signIn(this.form.value).subscribe(
       (data) => {
-        console.log(data), (this.error = undefined), localStorage.setItem("userLogin", JSON.stringify(data));
+        console.log(data), (this.error = undefined), localStorage.setItem("userLogin", JSON.stringify(data)), this.openSnackBar();
       },
       (err) => {
         console.log(err), (this.error = err.error);
       }
     );
   }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(LoggedComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
 }
+
+@Component({
+  selector: "snack-bar-component",
+  template: ` <span class="logged-in-snack"> Logged in! </span> `,
+  styles: [
+    `
+      .logged-in-snack {
+        color: lavender;
+      }
+    `,
+  ],
+})
+export class LoggedComponent {}
